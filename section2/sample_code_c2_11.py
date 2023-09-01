@@ -5,10 +5,8 @@ import wave as wave
 
 # numpyをインポート（波形データを2byteの数値列に変換するために使用）
 import numpy as np
-
 # scipyのsignalモジュールをインポート（stft等信号処理計算用)
 import scipy.signal as sp
-
 # sounddeviceモジュールをインポート
 import sounddevice as sd
 
