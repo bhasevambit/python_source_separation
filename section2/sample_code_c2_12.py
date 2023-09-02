@@ -1,5 +1,3 @@
-
-
 # wave形式の音声波形を読み込むためのモジュール(wave)をインポート
 import wave as wave
 
