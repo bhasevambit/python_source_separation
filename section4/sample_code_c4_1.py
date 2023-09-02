@@ -130,9 +130,9 @@ def animation_update(t):
 print("=== Sound DATA plot START ===")
 fig = plt.figure(figsize=(10, 4))
 
-print("=======================================================================================")
-print("=== If you want to stop animation, please 「X」button on the left top of the figure ===")
-print("=======================================================================================")
+print("======================================================================================")
+print("=== If you want to stop animation, please 「X」button on the top bar of the figure ===")
+print("======================================================================================")
 
 ani = animation.FuncAnimation(fig, animation_update, interval=200, frames=n_iterations)
 
