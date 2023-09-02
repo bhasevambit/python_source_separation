@@ -1,5 +1,4 @@
 
-
 # numpyをインポート（行列を扱う各種関数を含む）
 import numpy as np
 
