@@ -40,6 +40,9 @@ n_clusters = len(alpha)
 n_iterations = 101
 log_likelihood = np.zeros(n_iterations)
 ims = []
+
+print("=== Iteration START ===")
+
 for t in range(n_iterations):
     print("t{}".format(t))
     if t == 0:
@@ -79,6 +82,9 @@ for t in range(n_iterations):
     var = np.einsum("ij,ij->j", beta, np.power(x[:, None] - mu[None, :], 2.)) / N
     var = np.maximum(var, 1.e-18)
 
+print("=== Iteration END ===")
+print("")
+
 # 対数ゆう度をグラフ化する
 plt.figure(figsize=(10, 4))
 plt.plot(np.arange(0, n_iterations, 1), log_likelihood, color="black", linewidth=1, label="log likelihood")
@@ -91,7 +97,9 @@ plt.show()
 # パラメータ更新の様子をアニメーションで表示
 def animation_update(t):
     plt.cla()
-    plt.hist(x, bins=50, normed=True, label="observed samples")
+
+    # plt.hist(x, bins=50, normed=True, label="observed samples")
+    plt.hist(x, bins=50, density=True, label="observed samples")
 
     xmin = -20
     xmax = 20
@@ -101,6 +109,7 @@ def animation_update(t):
 
     # GMMを描画する
     pdf = None
+
     for alpha, var, mu in zip(alpha_buf[t], var_buf[t], mu_buf[t]):
         pdf_each = alpha * norm.pdf(x_range, mu, np.sqrt(var))
         if pdf is None:
@@ -118,7 +127,14 @@ def animation_update(t):
 
 
 # 音声データをプロットする
+print("=== Sound DATA plot START ===")
 fig = plt.figure(figsize=(10, 4))
 
+print("=======================================================================================")
+print("=== If you want to stop animation, please 「X」button on the left top of the figure ===")
+print("=======================================================================================")
+
 ani = animation.FuncAnimation(fig, animation_update, interval=200, frames=n_iterations)
+
 plt.show()
+print("=== Sound DATA plot END ===")
